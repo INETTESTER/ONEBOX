@@ -2,19 +2,16 @@
 import { sleep } from 'k6';
 import { error_check } from '../check/check.js';
 import { scenario } from 'k6/execution';
-
-import { ran } from '../api/script.js';
-import { callback_scb } from '../api/getJson.js';
+import { upload_3_step } from '../api/upload_3_step.js';
 
 
 
 //============================================================================
 
 export default function () {    //เรียกใช้ API ใน export default function
-  response = ran()
-  //response = callback_scb(scenario)
+  response = upload_3_step();
 
-  
+
   error_check(response);
   sleep(1)
 }

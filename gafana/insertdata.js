@@ -64,7 +64,7 @@ export default function () {
 
   filteredPasses.forEach((item) => {
     //console.log(`${item.status}: ${item.passes}`);
-    if (item.status === "200 OK" || item.status === "201 Created") {
+    if (item.status === "200 OK" || item.status === "201 Created" || item.status === "204 No Content") {
       console.log(`✅ ${item.status}: ${item.passes}`);
     }
     else {
