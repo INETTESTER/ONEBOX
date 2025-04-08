@@ -4,14 +4,20 @@ import { error_check } from '../check/check.js';
 import { scenario } from 'k6/execution';
 import { upload_3_step } from '../api/upload_3_step.js';
 import { etax } from '../api/etax.js';
-
-
+import { storage } from '../api/storage.js';
+import { download_file } from '../api/download_file.js';
+import { download_file_s3 } from '../api/download_file_s3.js';
+import { trash } from '../api/trash.js';
 
 //============================================================================
 
 export default function () {    //เรียกใช้ API ใน export default function
   //response = upload_3_step();
-  response = etax(cid)
+  //response = etax(cid)
+  //response = storage()
+  //response = download_file()
+  //response = download_file_s3()
+  response = trash(scenario)
 
   error_check(response);
   sleep(1)
