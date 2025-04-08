@@ -3,14 +3,15 @@ import { sleep } from 'k6';
 import { error_check } from '../check/check.js';
 import { scenario } from 'k6/execution';
 import { upload_3_step } from '../api/upload_3_step.js';
+import { etax } from '../api/etax.js';
 
 
 
 //============================================================================
 
 export default function () {    //เรียกใช้ API ใน export default function
-  response = upload_3_step();
-
+  //response = upload_3_step();
+  response = etax(cid)
 
   error_check(response);
   sleep(1)
