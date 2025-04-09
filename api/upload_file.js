@@ -22,6 +22,6 @@ export function upload_file() {
 
 
   //console.log('Response status:', res.status);
-  console.log('Response body:', res.body);
+  //console.log('Response body:', res.body);
   return res
 }

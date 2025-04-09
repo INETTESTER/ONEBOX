@@ -8,6 +8,12 @@ import { storage } from '../api/storage.js';
 import { download_file } from '../api/download_file.js';
 import { download_file_s3 } from '../api/download_file_s3.js';
 import { trash } from '../api/trash.js';
+import { metadata } from '../api/metadata.js';
+import { search_update } from '../api/search_update.js';
+import { search } from '../api/search.js';
+import { upload_file } from '../api/upload_file.js';
+import { upload_folder } from '../api/upload_folder.js';
+
 
 //============================================================================
 
@@ -17,7 +23,13 @@ export default function () {    //เรียกใช้ API ใน export def
   //response = storage()
   //response = download_file()
   //response = download_file_s3()
-  response = trash(scenario)
+  //response = trash(scenario)
+  //response = metadata()
+  //response = search_update()
+  //response = search()
+  //response = upload_file()
+  //response = upload_folder()
+
 
   error_check(response);
   sleep(1)
