@@ -81,6 +81,10 @@ export function upload_3_step() {
     const res_step2 = http.post(url_step2, formData_step2);
     if (!res_step2 || res_step2.error_code || (res_step2.status !== 200 && res_step2.status !== 201 && res_step2.status !== 204)) {
         console.log("Step 2 Fail");
+            console.log(`AWSAccessKeyId: ${AWSAccessKeyId}`);
+    console.log(`Key: ${key}`);
+    console.log(`Policy: ${policy}`);
+    console.log(`Signature: ${signature}`);
         return res_step2
     }
     check(res_step2, {

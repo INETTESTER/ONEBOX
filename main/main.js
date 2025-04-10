@@ -18,7 +18,7 @@ import { upload_folder } from '../api/upload_folder.js';
 //============================================================================
 
 export default function () {    //เรียกใช้ API ใน export default function
-  //response = upload_3_step();
+  response = upload_3_step();
   //response = etax(cid)
   //response = storage()
   //response = download_file()

@@ -20,6 +20,7 @@ export function metadata() {
     headers: {
       'Content-Type': 'application/json',
     },
+    timeout:'180s',
   };
 
   const res = http.post(url, payload, params);
