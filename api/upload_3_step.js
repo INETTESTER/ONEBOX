@@ -23,6 +23,7 @@ export function upload_3_step() {
         headers: {
             'Content-Type': 'application/json',
         },
+        timeout:'180s',
     };
     const res_step1 = http.post(url_step1, payload_step1, params_step1);
     if (!res_step1 || res_step1.error_code || (res_step1.status !== 200 && res_step1.status !== 201)) {
@@ -82,6 +83,7 @@ export function upload_3_step() {
 
     const res_step2 = http.post(url_step2, formData_step2.body(), {
         headers: { 'Content-Type': 'multipart/form-data; boundary=' + formData_step2.boundary },
+        timeout:'180s',
     });
     if (!res_step2 || res_step2.error_code || (res_step2.status !== 200 && res_step2.status !== 201 && res_step2.status !== 204)) {
         console.log("Step 2 Fail");
@@ -132,6 +134,7 @@ export function upload_3_step() {
         headers: {
             'Content-Type': 'application/json',
         },
+        timeout:'180s',
     };
 
     const response_step3 = http.post(url_step3, payload_step3, params_step3);
