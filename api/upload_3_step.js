@@ -1,6 +1,9 @@
 import http from 'k6/http';
 import { check } from 'k6';
+import { FormData } from 'https://jslib.k6.io/formdata/0.0.2/index.js';
+
 const fileData = http.file(open('../file/empty file.pdf'), 'empty file.pdf');
+
 export function upload_3_step() {
     //step 1
     const url_step1 = 'https://box-newcluster.one.th/uploads/api/v1/checking_file_data/upload';
@@ -70,15 +73,16 @@ export function upload_3_step() {
     //step 2
     const url_step2 = 'https://inet-s3-object-gw.inet.co.th/one-box-loadtest';
 
-    const formData_step2 = {
-        AWSAccessKeyId: '' + AWSAccessKeyId,
-        key: '' + key,
-        policy: '' + policy,
-        signature: '' + signature,
-        file: fileData,
-    };
+    const formData_step2 = new FormData();
+    formData_step2.append('AWSAccessKeyId', '' + AWSAccessKeyId);
+    formData_step2.append('key', '' + key);
+    formData_step2.append('policy', '' + policy);
+    formData_step2.append('signature', '' + signature);
+    formData_step2.append('file', fileData);
 
-    const res_step2 = http.post(url_step2, formData_step2);
+    const res_step2 = http.post(url_step2, formData_step2.body(), {
+        headers: { 'Content-Type': 'multipart/form-data; boundary=' + formData_step2.boundary },
+    });
     if (!res_step2 || res_step2.error_code || (res_step2.status !== 200 && res_step2.status !== 201 && res_step2.status !== 204)) {
         console.log("Step 2 Fail");
             console.log(`AWSAccessKeyId: ${AWSAccessKeyId}`);
